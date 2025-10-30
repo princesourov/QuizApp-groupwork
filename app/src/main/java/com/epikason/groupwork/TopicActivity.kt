@@ -6,16 +6,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.epikason.groupwork.databinding.ActivityMainBinding
+import com.epikason.groupwork.databinding.ActivityTopicBinding
 
-class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-
+class TopicActivity : AppCompatActivity() {
+    lateinit var binding: ActivityTopicBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityTopicBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -23,11 +22,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        with(binding){
-            startBtn.setOnClickListener {
-                val intent = Intent(this@MainActivity, TopicActivity::class.java)
-                startActivity(intent)
+        with(binding) {
+            cardGeneral.setOnClickListener {
+                val generalIntent = Intent(this@TopicActivity, PlayActivity::class.java)
+                startActivity(generalIntent)
             }
         }
     }
